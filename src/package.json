@@ -1,0 +1,19 @@
+{
+  "author": "Alexander Pekhota",
+  "name": "near-dup-detection",
+  "version": "0.1.0",
+  "description": "a simple near duplicate detection by Shingling method",
+  "dependencies": {
+    "pos": "~0.1.4",
+    "crc": "~0.2.1",
+    "async": "~0.2.9",
+    "natural": "~0.1.25"
+  },
+  "keywords": [
+    "w-shingling",
+    "shingles",
+    "processing",
+    "natural",
+    "N-gram"
+  ]
+}
