@@ -1,5 +1,19 @@
-module.exports = function(content1, content2, callback){
+module.exports = function(content1, content2, shingleLength, callback){
   // based on http://habrahabr.ru/post/65944/
+  var args = [];
+  for (var i = 0; i < arguments.length; i++) {
+    args.push(arguments[i]);
+  }
+
+  content1 = args.shift();
+  content2 = args.shift();
+  callback = args.pop();
+
+  if(args.length > 0) {
+    shingleLength = args.shift();
+  } else {
+    shingleLength = 10;
+  }
 
   // first init modules
   var pos = require('pos');
@@ -7,7 +21,7 @@ module.exports = function(content1, content2, callback){
   var fs = require('fs');
   var async = require('async');
 
-  var SHINGLE_LENGTH = 10;
+  var SHINGLE_LENGTH = shingleLength;
 
 // it always can be better
   var textCanonization = function(text, callback) {

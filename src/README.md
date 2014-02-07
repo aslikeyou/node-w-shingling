@@ -1,12 +1,17 @@
-type in your console <br>
+Near duplicate detection for node.js <br>
+Installation <br>
   ```
-  git clone https://github.com/aslikeyou/node-w-shingling.git
+  npm i near-dup-detection
   ```
-then write <br>
+Declaration <br>
   ```
-  npm install
+ndd(text1, text2, [shingleLength = 10], callback(err, result))
   ```
-then <br>
+Example <br>
   ```
-  node test.js
+  var ndd = require('near-dup-detection');
+
+  ndd(text1, text2, function(err, result) {
+    console.log(result); // from 0 to 1 where 1 - the same documents
+  });
   ```
