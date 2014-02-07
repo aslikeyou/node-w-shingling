@@ -9,6 +9,13 @@
     "async": "~0.2.9",
     "natural": "~0.1.25"
   },
+  "devDependencies": {
+    "mocha": "",
+    "should": ""
+  },
+  "scripts": {
+    "test": "mocha -R spec"
+  },
   "main" : "./lib/ndd",
   "keywords": [
     "w-shingling",
