@@ -1,4 +1,4 @@
-exports.ndd = function(content1, content2, callback){
+module.exports = function(content1, content2, callback){
   // based on http://habrahabr.ru/post/65944/
 
   // first init modules
@@ -46,7 +46,7 @@ exports.ndd = function(content1, content2, callback){
      */
     ['”', '“', "\n", '\r'].forEach(strCharacterRemove);
 
-    //var words = new pos.Lexer().lex(text);
+    var words = new pos.Lexer().lex(text);
     var taggedWords = new pos.Tagger().tag(words);
 
     var removeWords = [];
@@ -116,9 +116,14 @@ exports.ndd = function(content1, content2, callback){
     var words = text.split(' ');
     var shingles = [];
     var wordsLength = words.length;
-    while(shingles.length !== (wordsLength - SHINGLE_LENGTH + 1)) {
-      shingles.push(words.slice(0, SHINGLE_LENGTH).join(' '));
-      words = words.slice(1);
+
+    if(wordsLength < SHINGLE_LENGTH) {
+      shingles.push(words.join(' '));
+    } else {
+      while(shingles.length !== (wordsLength - SHINGLE_LENGTH + 1)) {
+        shingles.push(words.slice(0, SHINGLE_LENGTH).join(' '));
+        words = words.slice(1);
+      }
     }
 
     callback(shingles)
